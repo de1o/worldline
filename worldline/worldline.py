@@ -48,7 +48,7 @@ def moemoeda(func):
     def decorator(*args, **kwargs):
         func(*args, **kwargs)
         emoticon = get_random_emoticon()
-        print emoticon, '.....'
+        print emoticon
     return decorator
 
 
@@ -106,9 +106,10 @@ def get_random_emoticon():
 @taihen
 def when_checkout(argv):
     if argv[3] != '1':
-        exit(0)
+        return
     if argv[1] == argv[2]:
-        print("世界线收束至同一位置")
+        print("世界线收束至同一位置"),
+        return
     delta = calc_divergence_value(sys.argv[1], sys.argv[2])
     total = calc_world_base_value()
     print("世界线变动率%6f..." % (delta/total)),
