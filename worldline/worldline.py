@@ -116,7 +116,7 @@ def when_checkout(argv):
 
 
 @moemoeda
-# @taihen
+@taihen
 def when_commit():
     commit_a, commit_b = get_last_two_commit_hash()
     delta = calc_divergence_value(commit_a, commit_b)
