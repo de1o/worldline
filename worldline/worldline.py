@@ -116,13 +116,15 @@ def when_checkout(argv):
 
 
 @moemoeda
-@taihen
+# @taihen
 def when_commit():
     commit_a, commit_b = get_last_two_commit_hash()
     delta = calc_divergence_value(commit_a, commit_b)
-    print("本次time leap导致世界线偏离了%6f" % delta/calc_world_base_value()),
+    print("本次time leap导致世界线偏离了%6f" % (delta/calc_world_base_value())),
 
 
+@moemoeda
+@taihen
 def when_merge():
     commit_a, commit_b = get_last_two_commit_hash()
     delta = calc_divergence_value(commit_a, commit_b)
