@@ -1,0 +1,8 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from worldline import worldline
+
+
+if __name__ == '__main__':
+    worldline.when_commit()
+
