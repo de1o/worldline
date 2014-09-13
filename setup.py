@@ -1,5 +1,5 @@
-import sys
-import os
+# import sys
+# import os
 from setuptools import setup, find_packages
 
 setup(
@@ -14,6 +14,12 @@ setup(
     include_package_data=True,
     zip_safe=False,
     platforms='any',
+    entry_points={
+        'console_scripts':
+            [
+                'wlinstall=worldline.worldline:install',
+            ]
+    },
     classifiers=[
         # As from http://pypi.python.org/pypi?%3Aaction=list_classifiers
         'Development Status :: 1 - Planning',

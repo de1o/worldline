@@ -42,6 +42,36 @@ emoticons = [
     """_(:3」∠)_""",
 ]
 
+post_checkout = """#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+import sys
+from worldline import worldline
+
+
+if __name__ == '__main__':
+    worldline.when_checkout(sys.argv)
+"""
+
+post_commit = """
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from worldline import worldline
+
+
+if __name__ == '__main__':
+    worldline.when_commit()
+"""
+
+post_merge = """
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from worldline import worldline
+
+
+if __name__ == '__main__':
+    worldline.when_merge()
+"""
+
 
 def moemoeda(func):
     @functools.wraps(func)
@@ -130,3 +160,24 @@ def when_merge():
     delta = calc_divergence_value(commit_a, commit_b)
     total = calc_world_base_value()
     print("受到另一世界线的影响，本世界线偏移了%6f" % (delta/total)),
+
+
+def install():
+    try:
+        os.chdir('.git/hooks')
+    except OSError:
+        print(">>>>>>>>>.git directory not found!")
+        return
+
+    with open('post-checkout', 'w') as f:
+        f.write(post_checkout)
+
+    with open('post-commit', 'w') as f:
+        f.write(post_commit)
+
+    with open('post-merge', 'w') as f:
+        f.write(post_merge)
+
+    os.chmod('post-checkout', 0755)
+    os.chmod('post-commit', 0755)
+    os.chmod('post-merge', 0755)
